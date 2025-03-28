@@ -96,6 +96,7 @@ class Node:
 
 
 class LinkedList:
+    """Linked list implementation to apply polynomial operations."""
     def __init__(self):
         # You are also welcome to use a sentinel/dummy node!
         # It is definitely recommended, which will we learn more
@@ -111,6 +112,7 @@ class LinkedList:
     # If a term with that exponent already exists, add the coefficients together.
     # You must keep the terms in descending order by exponent.
     def insert_term(self, coeff, exp):
+        """Introduce a term into the polynomial in question."""
         if coeff == 0:
             return
         new_node = Node(coeff, exp)
@@ -140,6 +142,7 @@ class LinkedList:
 
     # Add a polynomial p to the polynomial and return the resulting polynomial as a new linked list.
     def add(self, p):
+        """"Additional polynomial to the current one and return the subsequent result"""
         result = LinkedList()
         a = self.head
         b = p.head
@@ -164,6 +167,7 @@ class LinkedList:
 
     # Multiply a polynomial p with the polynomial and return the product as a new linked list.
     def mult(self, p):
+        """Multiply a different polynomial with the current one and return the subsequent result."""
         result = LinkedList()
         a = self.head
         while a:
@@ -178,29 +182,31 @@ class LinkedList:
 
     # Return a string representation of the polynomial.
     def __str__(self):
+        """Return string form of the polynomial."""
+        if not self.head:
+            return ""
         terms = []
         current = self.head
         while current:
             terms.append(f"({current.coeff}, {current.exp})")
             current = current.next
-        return " -> ".join(terms)
+        return " + ".join(terms)
 
 
 def main():
+    """Read the input, compute the sum and the product of the polynomials, and print the resulting outcomes."""
     # read data from stdin (terminal/file) using input() and create polynomial p
     p = LinkedList()
-    p_terms = input("Enter terms for polynomial p (for example, '5 3 -1 2 4 0'): ").split()
-    for i in range(0, len(p_terms), 2):
-        coeff = int(p_terms[i])
-        exp = int(p_terms[i+1])
+    n = int(input())
+    for _ in range(n):
+        coeff, exp = map(int, input().split())
         p.insert_term(coeff, exp)
 
     # read data from stdin (terminal/file) using input() and create polynomial q
     q = LinkedList()
-    q_terms = input("Enter terms for polynomial q (for example, '0 4 6 2'): ").split()
-    for i in range(0, len(q_terms), 2):
-        coeff = int(q_terms[i])
-        exp = int(q_terms[i+1])
+    m = int(input())
+    for _ in range(m):
+        coeff, exp = map(int, input().split())
         q.insert_term(coeff, exp)
 
     # get sum of p and q as a new linked list and print sum

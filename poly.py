@@ -194,20 +194,37 @@ class LinkedList:
 
 
 def main():
-    """Read the input, compute the sum and the product of the polynomials, and print the resulting outcomes."""
+    """Read the input, compute the sum and the product of the polynomials, \
+        and print the resulting outcomes."""
     # read data from stdin (terminal/file) using input() and create polynomial p
     p = LinkedList()
-    n = int(input())
+    while True:
+        line = input().strip()
+        if line:
+            n = int(line)
+            break
     for _ in range(n):
-        coeff, exp = map(int, input().split())
-        p.insert_term(coeff, exp)
+        while True:
+            line = input().strip()
+            if line:
+                coeff, exp = map(int, line.split())
+                p.insert_term(coeff, exp)
+                break
 
     # read data from stdin (terminal/file) using input() and create polynomial q
     q = LinkedList()
-    m = int(input())
+    while True:
+        line = input().strip()
+        if line:
+            m = int(line)
+            break
     for _ in range(m):
-        coeff, exp = map(int, input().split())
-        q.insert_term(coeff, exp)
+        while True:
+            line = input().strip()
+            if line:
+                coeff, exp = map(int, line.split())
+                q.insert_term(coeff, exp)
+                break
 
     # get sum of p and q as a new linked list and print sum
     sum_pq = p.add(q)

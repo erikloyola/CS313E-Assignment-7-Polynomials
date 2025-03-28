@@ -228,11 +228,11 @@ def main():
 
     # get sum of p and q as a new linked list and print sum
     sum_pq = p.add(q)
-    print("Sum: ", sum_pq)
+    print(sum_pq)
 
     # get product of p and q as a new linked list and print product
     prod_pq = p.mult(q)
-    print("Product: ", prod_pq)
+    print(prod_pq)
 
 if __name__ == "__main__":
     main()
